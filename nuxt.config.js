@@ -24,7 +24,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [
+    'element-ui/lib/theme-chalk/reset.css',
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/common.css',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -40,7 +44,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'https://nuxt-blog-service-demo.firebaseio.com/',
+  },
   /*
    ** Build configuration
    */
