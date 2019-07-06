@@ -13,12 +13,15 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
     'prettier/vue',
   ],
-  plugins: ['prettier', 'vue'],
+  globals: {
+    $nuxt: true
+  },
+  plugins: ['vue'],
   rules: {
-    'prettier/prettier': 'error',
-    'comma-dangle': ['error', 'always-multiline'],
+    'no-console': 'off',
+    'prettier/prettier': 'error'
   },
 };

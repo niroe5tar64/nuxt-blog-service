@@ -10,27 +10,22 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "lintcheck": "eslint --print-config .eslintrc | eslint-config-prettier-check"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.3.6",
-    "element-ui": "^2.4.11",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/axios": "^5.5.4",
+    "element-ui": "^2.10.1",
+    "nuxt": "^2.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "eslint": "^6.0.1",
-    "eslint-config-prettier_0": "ESLintのルールのうちコード整形関連のルールを無効化して衝突を回避します。",
     "eslint-config-prettier": "^6.0.0",
     "eslint-loader": "^2.2.0",
-    "": "Prettierから公式に提供されている prettier-eslint を使用すると、Prettierで整形したコードをESLintに受け渡すことができる。",
-    "eslint-plugin-prettier_0": "ESLintの実行時にPrettierを呼び出すようにする。",
-    "eslint-plugin-prettier_1": "しかし、prettier-eslintはどこが変更されるか実行してみるまでわからないのに対して",
-    "eslint-plugin-prettier_2": "eslint-plugin-prettierならESLintの普通のチェック（AutoFixなし）を行うだけでPrettierを含む変更対象をLintエラーとして確認できます。",
-    "eslint-plugin-prettier_3": "また、エディタプラグインなども普通のESLint用のプラグインで良い。",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   }
 }
