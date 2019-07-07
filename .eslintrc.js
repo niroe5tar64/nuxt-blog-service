@@ -12,7 +12,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/recommended',
+    'plugin:vue/strongly-recommended',
     'plugin:prettier/recommended',
     'prettier/vue',
   ],
@@ -22,6 +22,34 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     'no-console': 'off',
+
+    "vue/html-closing-bracket-newline": ["error", {
+      "singleline": "never",
+      "multiline": "never"
+    }],
+    "vue/order-in-components": ["error", {
+      "order": [
+        "el",
+        "name",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "data",
+        "asyncData",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
+    }],
     'prettier/prettier': 'error'
   },
 };
