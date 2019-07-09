@@ -26,6 +26,9 @@ export default {
       },
     ],
   },
+  router: {
+    middleware: ['auth-cookie'],
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -54,8 +57,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL:
-      'https://nuxt-blog-service-demo.firebaseio.com/',
+    baseURL: 'https://nuxt-blog-service-demo.firebaseio.com/',
   },
   /*
    ** Build configuration
@@ -75,6 +77,9 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
         });
+      }
+      if (ctx.isDev) {
+        config.devtool = 'eval-source-map';
       }
     },
   },

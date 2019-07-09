@@ -16,7 +16,10 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
     "element-ui": "^2.10.1",
-    "nuxt": "^2.8.1"
+    "lodash.clonedeep": "^4.5.0",
+    "moment": "^2.24.0",
+    "nuxt": "^2.8.1",
+    "universal-cookie": "^4.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
