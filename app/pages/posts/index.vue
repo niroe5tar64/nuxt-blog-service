@@ -19,20 +19,24 @@
 </template>
 
 <script>
-import moment from '~/plugins/moment';
-import { mapGetters } from 'vuex';
+//import moment from '~/plugins/moment';
+import Post from '~/models/Post';
 export default {
-  async asyncData({ store }) {
-    await store.dispatch('posts/fetchPosts');
-  },
   computed: {
     showPosts() {
-      return this.posts.map((post) => {
-        post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss');
-        return post;
-      });
+      const posts = Post.query()
+        .with('user')
+        .orderBy('id', 'asc')
+        .get();
+
+      return posts;
+
+      // return posts.map((post) => {
+      //   post.created_at = moment(post.created_at.toISOString).format(
+      //     'YYYY/MM/DD HH:mm:ss',
+      //   );
+      // });
     },
-    ...mapGetters('posts', ['posts']),
   },
   methods: {
     handleClick(post) {

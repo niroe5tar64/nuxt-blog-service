@@ -42,47 +42,51 @@
 
 <script>
 import moment from '~/plugins/moment';
-import { mapGetters, mapActions } from 'vuex';
-import cloneDeep from 'lodash.clonedeep';
+import { mapGetters } from 'vuex';
+//import cloneDeep from 'lodash.clonedeep';
+import Post from '~/models/Post';
 export default {
   filters: {
     time(val) {
       return moment(val).format('YYYY/MM/DD HH:mm:ss');
     },
   },
-  async asyncData({ store, route }) {
-    if (store.getters['posts/posts'].find((p) => p.id === route.params.id)) {
-      return;
+  async asyncData({ route, error }) {
+    const post = await Post.query()
+      .with('user')
+      .find(route.params.id);
+    if (!post) {
+      error({ statusCode: 404 });
     }
-    await store.dispatch('posts/fetchPosts');
   },
   computed: {
     post() {
-      return this.posts.find((p) => p.id === this.$route.params.id);
+      return Post.query()
+        .with('user')
+        .find(this.$route.params.id);
     },
     isLiked() {
-      if (!this.user) return false;
-      return this.post.likes.find((l) => l.user_id === this.user.id);
+      if (!this.loginUser) return false;
+      return true; // this.post.likes.find((l) => l.user_id === this.user.id);
     },
-    ...mapGetters(['user', 'isLoggedIn']),
-    ...mapGetters('posts', ['posts']),
+    ...mapGetters('auth', ['loginUser', 'isLoggedIn']),
   },
   methods: {
     like() {
       if (!this.isLoggedIn) {
         return;
       }
-      const likePayload = { user: this.user, post: this.post };
-      this.addLikeToPost(cloneDeep(likePayload));
-      this.addLikeLogToUser(cloneDeep(likePayload));
+      // const likePayload = { user: this.user, post: this.post };
+      // this.addLikeToPost(cloneDeep(likePayload));
+      // this.addLikeLogToUser(cloneDeep(likePayload));
     },
     unlike() {
       if (!this.isLoggedIn) {
         return;
       }
     },
-    ...mapActions(['addLikeLogToUser']),
-    ...mapActions('posts', ['addLikeToPost']),
+    // ...mapActions(['addLikeLogToUser']),
+    // ...mapActions('posts', ['addLikeToPost']),
   },
 };
 </script>

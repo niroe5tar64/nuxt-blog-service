@@ -32,29 +32,31 @@
 
 <script>
 import moment from '~/plugins/moment';
-import { mapGetters } from 'vuex';
+import User from '~/models/User';
+import Post from '~/models/Post';
 export default {
-  async asyncData({ store, route, error }) {
-    const { id } = route.params;
-    try {
-      await store.dispatch('users/fetchUser', { id });
-    } catch (e) {
+  async asyncData({ route, error }) {
+    const user = User.query().find(route.params.id);
+    if (!user) {
       error({ statusCode: 404 });
     }
   },
   computed: {
     userPosts() {
-      return Object.entries(this.user.posts).map(([id, post]) => {
+      const post = Post.query()
+        .with('user')
+        .where('user_id', this.$route.params.id)
+        .orderBy('id', 'asc')
+        .get();
+
+      return post.map((post) => {
         post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss');
-        return { id, ...post };
+        return post;
       });
     },
     user() {
-      const user = this.users.find((u) => u.id === this.$route.params.id);
-      if (!user) return null;
-      return Object.assign({ posts: [] }, user);
+      return User.query().find(this.$route.params.id);
     },
-    ...mapGetters('users', ['users']),
   },
 };
 </script>

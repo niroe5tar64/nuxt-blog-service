@@ -24,10 +24,19 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import Post from '~/models/Post';
+import data from '~/data';
 import Cookies from 'universal-cookie';
+
 export default {
+  async fetch() {
+    const initialData = await data();
+
+    Post.create({ data: initialData });
+  },
+
   asyncData({ redirect, store }) {
-    if (store.getters['user']) {
+    if (store.getters['auth/loginUser']) {
       redirect('/posts/');
     }
     return {
@@ -41,7 +50,7 @@ export default {
     buttonText() {
       return this.isCreateMode ? '新規登録' : 'ログイン';
     },
-    ...mapGetters(['user']),
+    ...mapGetters('auth', ['loginUser']),
   },
   methods: {
     async handleClickSubmit() {
@@ -56,7 +65,7 @@ export default {
             position: 'bottom-right',
             duration: 2000,
           });
-          cookies.set('user', JSON.stringify(this.user));
+          cookies.set('loginUser', JSON.stringify(this.loginUser));
           this.$router.push('/posts/');
         } catch (e) {
           this.$notify.error({
@@ -76,7 +85,7 @@ export default {
             position: 'bottom-right',
             duration: 2000,
           });
-          cookies.set('user', JSON.stringify(this.user));
+          cookies.set('loginUser', JSON.stringify(this.loginUser));
           this.$router.push('/posts/');
         } catch (e) {
           this.$notify.error({
@@ -88,7 +97,7 @@ export default {
         }
       }
     },
-    ...mapActions(['login', 'register']),
+    ...mapActions('auth', ['login', 'register']),
   },
 };
 </script>

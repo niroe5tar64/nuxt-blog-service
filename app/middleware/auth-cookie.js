@@ -5,9 +5,9 @@ export default ({ req, store }) => {
     return;
   }
   const cookies = new Cookies(req.headers.cookie);
-  const user = cookies.get('user');
+  const user = cookies.get('loginUser');
   if (user && user.id) {
     const { id } = user;
-    store.commit('setUser', { user: { id } });
+    store.commit('auth/setLoginUser', { loginUser: { id } });
   }
 };

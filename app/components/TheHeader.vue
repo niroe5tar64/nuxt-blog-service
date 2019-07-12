@@ -7,12 +7,12 @@
 
     <no-ssr>
       <el-menu-item
-        v-if="user"
+        v-if="loginUser"
         index="4"
         style="float: right;"
-        :route="{ path: `/users/${user.id}` }"
+        :route="{ path: `/users/${loginUser.id}` }"
       >
-        <span>{{ user.id }}</span>
+        <span>{{ loginUser.id }}</span>
       </el-menu-item>
       <el-menu-item
         v-else
@@ -35,9 +35,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters('auth', ['loginUser']),
   },
 };
 </script>

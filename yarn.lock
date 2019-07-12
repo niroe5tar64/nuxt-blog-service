@@ -1116,6 +1116,14 @@
     source-map "~0.6.1"
     vue-template-es2015-compiler "^1.9.0"
 
+"@vuex-orm/core@^0.31.13":
+  version "0.31.13"
+  resolved "https://registry.yarnpkg.com/@vuex-orm/core/-/core-0.31.13.tgz#b9516d74d4bcbf7906aa6fbae5298359287af874"
+  integrity sha512-wnKlfCwafWe4RiYXFKoIhyzhCdD5rlnvW75XAdedHb3Vcj7sKKiC3rgD4MbpbcsUfboX1egePoHnjzcGFqMYeA==
+  dependencies:
+    normalizr "^3.4.0"
+    vuex "^3.1.1"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -5456,6 +5464,11 @@ normalize-wheel@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/normalize-wheel/-/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
   integrity sha1-rsiGr/2wRQcNhWRH32Ls+GFG7EU=
+
+normalizr@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.4.0.tgz#fe79fd77768e0ae99944a8c35cbdb58521ab5d34"
+  integrity sha512-0dQLKpvsSb2f+vZwj78L855OMn9aeMQ0dQhduRqX3GkJh+k6rN9kcftxBV/VkW1n4q9OuV6F43Angn+pNbjg9w==
 
 npm-bundled@^1.0.1:
   version "1.0.6"

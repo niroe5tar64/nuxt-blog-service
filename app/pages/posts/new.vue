@@ -23,33 +23,33 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
+import Post from '~/models/Post';
+import moment from '~/plugins/moment';
+
 export default {
   asyncData({ redirect, store }) {
-    if (!store.getters['user']) {
+    if (!store.getters['auth/loginUser']) {
       redirect('/');
     }
     return {
-      formData: {
-        title: '',
-        body: '',
-      },
+      formData: Post.hydrate(),
     };
   },
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters('auth', ['loginUser']),
   },
   methods: {
     async publish() {
-      const payload = {
-        user: this.user,
-        ...this.formData,
-      };
-      await this.publishPost({ payload });
+      Post.insert({
+        data: {
+          ...this.formData,
+          user_id: this.loginUser.id,
+          created_at: moment().format(),
+        },
+      });
       this.$router.push('/posts');
     },
-    ...mapActions('users', ['updateUser']),
-    ...mapActions('posts', ['publishPost']),
   },
 };
 </script>
