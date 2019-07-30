@@ -20,10 +20,15 @@
           <div slot="header" class="clearfix">
             <span>{{ user.id }} さんの投稿</span>
           </div>
-          <el-table :data="userPosts" style="width: 100%" class="table">
+          <posts-table
+            :data="userPosts"
+            :has-user="false"
+            width-created_at="160"
+          />
+          <!-- <el-table :data="userPosts" style="width: 100%" class="table">
             <el-table-column prop="title" label="タイトル" />
             <el-table-column prop="created_at" label="投稿日時" width="160" />
-          </el-table>
+          </el-table> -->
         </el-card>
       </el-col>
     </el-row>
@@ -31,10 +36,14 @@
 </template>
 
 <script>
-import moment from '~/plugins/moment';
+// import moment from '~/plugins/moment';
+import PostsTable from '~/components/PostsTable';
 import User from '~/models/User';
 import Post from '~/models/Post';
 export default {
+  components: {
+    PostsTable,
+  },
   async asyncData({ route, error }) {
     const user = User.query().find(route.params.id);
     if (!user) {
@@ -43,16 +52,17 @@ export default {
   },
   computed: {
     userPosts() {
-      const post = Post.query()
+      const posts = Post.query()
         .with('user')
         .where('user_id', this.$route.params.id)
         .orderBy('id', 'asc')
         .get();
 
-      return post.map((post) => {
-        post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss');
-        return post;
-      });
+      return posts;
+      // return post.map((post) => {
+      //   post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss');
+      //   return post;
+      // });
     },
     user() {
       return User.query().find(this.$route.params.id);

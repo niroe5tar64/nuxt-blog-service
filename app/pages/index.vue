@@ -30,9 +30,7 @@ import Cookies from 'universal-cookie';
 
 export default {
   async fetch() {
-    const initialData = await data();
-
-    Post.create({ data: initialData });
+    Post.create({ data: await data() });
   },
 
   asyncData({ redirect, store }) {

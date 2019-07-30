@@ -4,7 +4,7 @@ import Post from '~/models/Post';
 
 const database = new Database();
 
-database.register(User, {});
-database.register(Post, {});
+database.register(User);
+database.register(Post);
 
 export default database;

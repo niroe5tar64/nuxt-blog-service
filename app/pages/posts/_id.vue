@@ -17,7 +17,7 @@
               @click="unlike"
             >
               <span class="el-icon-star-on" />
-              <span>{{ post.likes.length }}</span>
+              <!-- <span>{{ post.likes.length }}</span> -->
             </el-button>
             <el-button
               v-else
@@ -27,7 +27,7 @@
               @click="like"
             >
               <span class="el-icon-star-off" />
-              <span>{{ post.likes.length }}</span>
+              <!-- <span>{{ post.likes.length }}</span> -->
             </el-button>
           </p>
         </no-ssr>
