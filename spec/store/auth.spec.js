@@ -92,7 +92,13 @@ describe('actions', () => {
     await store.dispatch('register', loginUser.id);
     expect(store.getters['loginUser']).toEqual(loginUser);
     expect(store.getters['isLoggedIn']).toEqual(true);
+
+    // テスト中のVuex-ORMの挙動
+    // クラスメソッドは機能しない・・・
+    User.create({ data: { id: 'niro' } });
+    // dispatchで直接storeに書くやり方なら大丈夫。
     store.dispatch('entities/users/create', { data: { id: 'niro' } });
+
     console.log(store.state.entities.users.data);
   });
 });
