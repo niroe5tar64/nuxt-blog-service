@@ -1,9 +1,8 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 // import merge from 'lodash.merge';
 // import { cloneDeep } from 'lodash.clonedeep';
 // import auth from '~/store/auth';
-import IndexPage from '~/pages/index.vue';
 import ElementUI from 'element-ui';
 
 const localVue = createLocalVue();
@@ -27,9 +26,9 @@ describe('', () => {
   // }
 
   test('コンポーネントの構成', () => {
-    const wrapper = mount(IndexPage, {
-      localVue,
-    });
-    console.log(wrapper.html());
+    // const wrapper = mount(IndexPage, {
+    //   localVue,
+    // });
+    // console.log(wrapper.html());
   });
 });

@@ -2,11 +2,12 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import merge from 'lodash.merge';
 import PostsTable from '~/components/PostsTable.vue';
+import lang from 'element-ui/lib/locale/lang/ja';
 import ElementUI from 'element-ui';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
-localVue.use(ElementUI);
+localVue.use(ElementUI, { lang });
 
 describe('PostsTableの基本仕様テスト', () => {
   function createStore(overrides) {
@@ -73,7 +74,7 @@ describe('PostsTableの基本仕様テスト', () => {
     expect(wrapper.findAll('el-table-column-stub')).toHaveLength(2);
   });
 
-  test('デフォルト設定での挙動をチェック', () => {
+  test('デフォルト設定での動作チェック', () => {
     const wrapper = createWrapper().findAll('el-table-column-stub');
 
     let attrs;
@@ -92,7 +93,7 @@ describe('PostsTableの基本仕様テスト', () => {
     expect(attrs.width).toEqual('240');
   });
 
-  test('個別設定が通るをチェック', () => {
+  test('各カラムの設定をチェック', () => {
     const attrsByProps = createWrapper().props();
     const wrapper = createWrapper().findAll('el-table-column-stub');
 
@@ -117,6 +118,7 @@ describe('PostsTableの基本仕様テスト', () => {
 
     const wrapper = createWrapper();
     const post = wrapper.find('el-table-stub').props().data[0];
+    // console.log('---------->' + post + '<----------');
 
     wrapper.find('el-table-stub').vm.$emit('row-click', post);
     //expect(path).toEqual();

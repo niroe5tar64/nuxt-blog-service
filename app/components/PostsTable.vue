@@ -18,8 +18,6 @@
 </template>
 
 <script>
-// import Post from '~/models/Post';
-
 export default {
   props: {
     data: { type: Array, default: () => {} },
@@ -33,7 +31,6 @@ export default {
 
   methods: {
     handleClick(post) {
-      // console.log(Post.create({ data: this.data }));
       this.$router.push(`/posts/${post.id}`);
     },
   },

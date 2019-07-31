@@ -23,18 +23,15 @@ const mutations = {
 
 const actions = {
   async login({ commit }, { id }) {
-    await User.insert({
-      data: { id },
-    });
     const loginUser = await User.find(id);
     if (!loginUser.id) throw new Error('Invalid user');
     commit('setLoginUser', { loginUser });
   },
+
   async register({ commit }, { id }) {
     await User.insert({
       data: { id },
     });
-
     const loginUser = await User.find(id);
     if (!loginUser.id) throw new Error('Invalid user');
     commit('setLoginUser', { loginUser });

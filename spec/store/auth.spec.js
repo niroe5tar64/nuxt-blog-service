@@ -1,10 +1,9 @@
 import Vuex from 'vuex';
 import auth from '~/store/auth';
+import { plugins } from '~/store';
 import { createLocalVue } from '@vue/test-utils';
 import cloneDeep from 'lodash.clonedeep';
 import User from '~/models/User';
-import VuexORM from '@vuex-orm/core';
-import database from '~/database';
 
 jest.mock('~/models/user');
 
@@ -12,7 +11,7 @@ let localVue = createLocalVue();
 localVue.use(Vuex);
 
 function createUser(id = 'test_user') {
-  return new User({ id });
+  return { id };
 }
 
 describe('getters', () => {
@@ -58,21 +57,42 @@ describe('mutations', () => {
 });
 
 describe('actions', () => {
-  test('should ', async () => {
-    const store = new Vuex.Store({
-      modules: { auth: cloneDeep(auth) },
-      plugins: [VuexORM.install(database)],
-    });
-    const loginUser = createUser();
+  let store = null;
 
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: { auth: cloneDeep(auth) },
+      plugins,
+    });
     User.find = jest.fn().mockImplementation((id) => {
       return createUser(id);
     });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('login のチェック', async () => {
+    const loginUser = createUser();
 
     await store.dispatch('login', loginUser.id);
     expect(store.getters['loginUser']).toEqual(loginUser);
     expect(store.getters['isLoggedIn']).toEqual(true);
+  });
 
-    jest.restoreAllMocks();
+  test('register のチェック', async () => {
+    const loginUser = createUser();
+
+    User.insert = User.find = jest.fn().mockImplementation((id) => {
+      return createUser(id);
+    });
+    User.insert({ id: 'test' });
+
+    await store.dispatch('register', loginUser.id);
+    expect(store.getters['loginUser']).toEqual(loginUser);
+    expect(store.getters['isLoggedIn']).toEqual(true);
+    store.dispatch('entities/users/create', { data: { id: 'niro' } });
+    console.log(store.state.entities.users.data);
   });
 });
