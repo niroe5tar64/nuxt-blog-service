@@ -4,14 +4,14 @@
       <div slot="header" class="clearfix">
         <span>新規投稿</span>
       </div>
-      <posts-table :data="showPosts" />
+      <PostsTable :data="showPosts" />
     </el-card>
   </section>
 </template>
 
 <script>
 //import moment from '~/plugins/moment';
-import PostsTable from '~/components/PostsTable';
+import PostsTable from '~/components/organisms/PostsTable';
 import Post from '~/models/Post';
 export default {
   components: {

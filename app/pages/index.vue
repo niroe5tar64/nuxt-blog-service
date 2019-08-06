@@ -1,13 +1,13 @@
 <template>
   <section class="container">
-    <login-form />
+    <LoginForm />
   </section>
 </template>
 
 <script>
 import Post from '~/models/Post';
 import data from '~/data';
-import LoginForm from '~/components/LoginForm.vue';
+import LoginForm from '~/components/organisms/LoginForm.vue';
 
 export default {
   components: {

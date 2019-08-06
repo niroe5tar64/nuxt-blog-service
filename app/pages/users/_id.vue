@@ -20,15 +20,11 @@
           <div slot="header" class="clearfix">
             <span>{{ user.id }} さんの投稿</span>
           </div>
-          <posts-table
+          <PostsTable
             :data="userPosts"
             :has-user="false"
             width-created_at="160"
           />
-          <!-- <el-table :data="userPosts" style="width: 100%" class="table">
-            <el-table-column prop="title" label="タイトル" />
-            <el-table-column prop="created_at" label="投稿日時" width="160" />
-          </el-table> -->
         </el-card>
       </el-col>
     </el-row>
@@ -37,7 +33,7 @@
 
 <script>
 // import moment from '~/plugins/moment';
-import PostsTable from '~/components/PostsTable';
+import PostsTable from '~/components/organisms/PostsTable';
 import User from '~/models/User';
 import Post from '~/models/Post';
 export default {

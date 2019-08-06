@@ -1,4 +1,4 @@
-import { createLocalVue, shallowMount, mount } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import merge from 'lodash.merge';
 import Vuex from 'vuex';
 import ElementUI from 'element-ui';
@@ -6,7 +6,7 @@ import lang from 'element-ui/lib/locale/lang/ja';
 import PostsIndex from '~/pages/posts/index.vue';
 import { plugins } from '~/store';
 import { dataArray } from '~/data';
-import PostsTable from '~/components/PostsTable.vue';
+import PostsTable from '~/components/organisms/PostsTable.vue';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);

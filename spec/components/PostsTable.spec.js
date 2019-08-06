@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import merge from 'lodash.merge';
-import PostsTable from '~/components/PostsTable.vue';
+import PostsTable from '~/components/organisms/PostsTable.vue';
 import lang from 'element-ui/lib/locale/lang/ja';
 import ElementUI from 'element-ui';
 
