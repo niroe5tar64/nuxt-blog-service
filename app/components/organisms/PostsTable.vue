@@ -1,6 +1,6 @@
 <template>
   <section>
-    <el-table :data="data" style="width: 100%" @row-click="handleClick">
+    <el-table :data="data" style="width: 100%" @row-click="handleRowClick">
       <el-table-column prop="title" :label="labelTitle" />
       <el-table-column
         v-if="hasUser"
@@ -30,8 +30,8 @@ export default {
   },
 
   methods: {
-    handleClick(post) {
-      this.$router.push(`/posts/${post.id}`);
+    handleRowClick(post) {
+      this.$emit('row-click', post);
     },
   },
 };

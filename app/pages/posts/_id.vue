@@ -48,7 +48,7 @@ import Post from '~/models/Post';
 export default {
   filters: {
     time(val) {
-      return moment(val).format('YYYY/MM/DD HH:mm:ss');
+      return moment(val, 'YYYY/MM/DD HH:mm:ss');
     },
   },
   async asyncData({ route, error }) {

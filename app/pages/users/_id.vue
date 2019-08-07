@@ -24,6 +24,7 @@
             :data="userPosts"
             :has-user="false"
             width-created_at="160"
+            @row-click="handleRowClick"
           />
         </el-card>
       </el-col>
@@ -62,6 +63,11 @@ export default {
     },
     user() {
       return User.query().find(this.$route.params.id);
+    },
+  },
+  methods: {
+    handleRowClick(post) {
+      this.$router.push(`/posts/${post.id}`);
     },
   },
 };

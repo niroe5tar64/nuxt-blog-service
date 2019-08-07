@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span>新規投稿</span>
       </div>
-      <PostsTable :data="showPosts" />
+      <PostsTable :data="showPosts" @row-click="handleRowClick" />
     </el-card>
   </section>
 </template>
@@ -32,6 +32,11 @@ export default {
       //     'YYYY/MM/DD HH:mm:ss',
       //   );
       // });
+    },
+  },
+  methods: {
+    handleRowClick(post) {
+      this.$router.push(`/posts/${post.id}`);
     },
   },
 };
