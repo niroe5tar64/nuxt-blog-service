@@ -33,12 +33,12 @@
 
 <script>
 // import moment from '~/plugins/moment';
-import PostsTable from '~/components/organisms/PostsTable';
 import User from '~/models/User';
 import Post from '~/models/Post';
+import PostsTable from '~/components/organisms/PostsTable';
 export default {
   components: {
-    PostsTable,
+    PostsTable, //: () => import('~/components/organisms/PostsTable'),
   },
   async asyncData({ route, error }) {
     const user = User.query().find(route.params.id);

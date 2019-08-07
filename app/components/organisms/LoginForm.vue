@@ -5,7 +5,7 @@
     </div>
     <form>
       <LoginInfo :form-data="formData" />
-      <LoginResisterButton
+      <LoginButtonSwitcher
         @on-click-resister="handleClickResister"
         @on-click-login="handleClickLogin"
       />
@@ -17,12 +17,12 @@
 import { mapActions } from 'vuex';
 import Cookies from 'universal-cookie';
 import LoginInfo from '~/components/molecules/LoginInfo';
-import LoginResisterButton from '~/components/molecules/LoginResisterButton';
+import LoginButtonSwitcher from '~/components/molecules/LoginButtonSwitcher';
 
 export default {
   components: {
-    LoginInfo,
-    LoginResisterButton,
+    LoginInfo, //: () => import('~/components/molecules/LoginInfo'),
+    LoginButtonSwitcher, //: () => import('~/components/molecules/LoginButtonSwitcher'),
   },
 
   data() {

@@ -41,3 +41,5 @@
 //   //   console.log(wrapper.find('el-checkbox-stub').props());
 //   // });
 // });
+
+test('should ', () => {});

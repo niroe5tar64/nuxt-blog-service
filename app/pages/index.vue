@@ -11,7 +11,7 @@ import LoginForm from '~/components/organisms/LoginForm.vue';
 
 export default {
   components: {
-    LoginForm,
+    LoginForm, //: () => import('~/components/organisms/LoginForm.vue'),
   },
   async fetch({ redirect, store }) {
     if (store.getters['auth/loginUser']) {
