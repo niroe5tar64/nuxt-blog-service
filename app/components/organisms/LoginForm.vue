@@ -46,7 +46,7 @@ export default {
           duration: 2000,
         });
         cookies.set('loginUser', JSON.stringify(this.loginUser));
-        this.$router.push('/posts/');
+        this.$emit('on-click-resister');
       } catch (e) {
         this.$notify.error({
           title: 'アカウント作成失敗',
@@ -69,7 +69,7 @@ export default {
           duration: 2000,
         });
         cookies.set('loginUser', JSON.stringify(this.loginUser));
-        this.$router.push('/posts/');
+        this.$emit('on-click-login');
       } catch (e) {
         this.$notify.error({
           title: 'ログイン失敗',

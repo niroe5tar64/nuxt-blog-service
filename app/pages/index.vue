@@ -1,6 +1,9 @@
 <template>
   <section class="container">
-    <LoginForm />
+    <LoginForm
+      @on-click-resister="handleClickResister"
+      @on-click-login="handleClickLogin"
+    />
   </section>
 </template>
 
@@ -18,6 +21,14 @@ export default {
       redirect('/posts/');
     }
     Post.create({ data: await data() });
+  },
+  methods: {
+    async handleClickResister() {
+      this.$router.push('/posts/');
+    },
+    async handleClickLogin() {
+      this.$router.push('/posts/');
+    },
   },
 };
 </script>
