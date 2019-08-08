@@ -12,11 +12,11 @@
 <script>
 //import moment from '~/plugins/moment';
 import Post from '~/models/Post';
-import PostsTable from '~/components/organisms/PostsTable';
+import PostsTable from '~/components/organisms/PostsTable.vue';
 
 export default {
   components: {
-    PostsTable, //: () => import('~/components/organisms/PostsTable'),
+    PostsTable, //: () => import('~/components/organisms/PostsTable.vue'),
   },
   computed: {
     showPosts() {

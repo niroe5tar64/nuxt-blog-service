@@ -16,13 +16,13 @@
 <script>
 import { mapActions } from 'vuex';
 import Cookies from 'universal-cookie';
-import LoginInfo from '~/components/molecules/LoginInfo';
-import LoginButtonSwitcher from '~/components/molecules/LoginButtonSwitcher';
+import LoginInfo from '~/components/molecules/LoginInfo.vue';
+import LoginButtonSwitcher from '~/components/molecules/LoginButtonSwitcher.vue';
 
 export default {
   components: {
-    LoginInfo, //: () => import('~/components/molecules/LoginInfo'),
-    LoginButtonSwitcher, //: () => import('~/components/molecules/LoginButtonSwitcher'),
+    LoginInfo, //: () => import('~/components/molecules/LoginInfo.vue'),
+    LoginButtonSwitcher, //: () => import('~/components/molecules/LoginButtonSwitcher.vue'),
   },
 
   data() {

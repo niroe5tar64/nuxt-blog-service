@@ -7,7 +7,7 @@
     </div>
     <div class="text-right">
       <div
-        :is="button"
+        :is="selectedButton"
         type="primary"
         @on-click-resister="handleClickRssister"
         @on-click-login="handleClickLogin"
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import ResisterButton from '~/components/atoms/ResisterButton';
-import LoginButton from '~/components/atoms/LoginButton';
+import ResisterButton from '~/components/atoms/ResisterButton.vue';
+import LoginButton from '~/components/atoms/LoginButton.vue';
 
 export default {
   components: {},
@@ -28,7 +28,7 @@ export default {
     };
   },
   computed: {
-    button() {
+    selectedButton() {
       return this.isResisterMode ? ResisterButton : LoginButton;
     },
   },

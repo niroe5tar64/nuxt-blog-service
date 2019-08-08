@@ -36,10 +36,10 @@
 // import moment from '~/plugins/moment';
 import User from '~/models/User';
 import Post from '~/models/Post';
-import PostsTable from '~/components/organisms/PostsTable';
+import PostsTable from '~/components/organisms/PostsTable.vue';
 export default {
   components: {
-    PostsTable, //: () => import('~/components/organisms/PostsTable'),
+    PostsTable, //: () => import('~/components/organisms/PostsTable.vue'),
   },
   async asyncData({ route, error }) {
     const user = User.query().find(route.params.id);
