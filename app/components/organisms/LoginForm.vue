@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import Cookies from 'universal-cookie';
 import LoginInfo from '~/components/molecules/LoginInfo.vue';
 import LoginButtonSwitcher from '~/components/molecules/LoginButtonSwitcher.vue';
@@ -31,6 +31,10 @@ export default {
         id: '',
       },
     };
+  },
+
+  computed: {
+    ...mapGetters('auth', ['loginUser']),
   },
 
   methods: {

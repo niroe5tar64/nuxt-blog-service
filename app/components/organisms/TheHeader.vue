@@ -6,14 +6,16 @@
     <el-menu-item index="2" :route="toPosts">投稿一覧</el-menu-item>
 
     <no-ssr>
-      <el-menu-item
-        v-if="loginUser"
-        index="4"
-        style="float: right;"
-        :route="toLoginUser"
-      >
-        <span>{{ loginUser.id }}</span>
-      </el-menu-item>
+      <el-submenu v-if="loginUser" index="4" style="float: right;">
+        <template slot="title">
+          <span>{{ loginUser.id }}</span>
+        </template>
+        <el-menu-item index="4-1" :route="toLoginUser">マイページ</el-menu-item>
+        <el-menu-item index="4-2" :route="toLogout" @click="handleLogout">
+          ログアウト
+        </el-menu-item>
+      </el-submenu>
+
       <el-menu-item v-else index="4" style="float: right;" :route="toLogin">
         <span>ログイン</span>
       </el-menu-item>
@@ -25,17 +27,29 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import Cookies from 'universal-cookie';
 
 export default {
   props: {
     toPosts: { type: Object, default: () => {} },
     toLoginUser: { type: Object, default: () => {} },
+    toLogout: { type: Object, default: () => {} },
     toLogin: { type: Object, default: () => {} },
     toPostsNew: { type: Object, default: () => {} },
   },
+
   computed: {
     ...mapGetters('auth', ['loginUser']),
+  },
+
+  methods: {
+    handleLogout() {
+      const cookies = new Cookies();
+      cookies.remove('loginUser');
+      this.logout();
+    },
+    ...mapActions('auth', ['logout']),
   },
 };
 </script>

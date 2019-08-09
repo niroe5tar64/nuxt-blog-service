@@ -3,6 +3,7 @@
     <TheHeader
       :to-posts="toPosts"
       :to-login-user="toLoginUser"
+      :to-logout="toLogout"
       :to-login="toLogin"
       :to-posts-new="toPostsNew"
     />
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       toPosts: { path: '/posts/' },
+      toLogout: { path: '/' },
       toLogin: { path: '/' },
       toPostsNew: { path: '/posts/new/' },
     };

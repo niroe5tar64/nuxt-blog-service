@@ -22,6 +22,10 @@ const mutations = {
 };
 
 const actions = {
+  async logout({ commit }) {
+    commit('clearLoginUser');
+  },
+
   async login({ commit }, { id }) {
     const loginUser = await User.find(id);
     if (!loginUser.id) throw new Error('Invalid user');
