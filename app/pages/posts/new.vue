@@ -25,7 +25,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import Post from '~/models/Post';
-import moment from '~/plugins/moment';
+import dayjs from '~/plugins/dayjs';
 
 export default {
   asyncData({ redirect, store }) {
@@ -45,7 +45,7 @@ export default {
         data: {
           ...this.formData,
           user_id: this.loginUser.id,
-          created_at: moment().format(),
+          created_at: dayjs().format(),
         },
       });
       this.$router.push('/posts');

@@ -27,9 +27,7 @@ export default {
 
   data() {
     return {
-      formData: {
-        id: '',
-      },
+      formData: { id: '' },
     };
   },
 
